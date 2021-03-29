@@ -26,7 +26,7 @@ void loop() {
   
   float sensorValue = analogRead(LDR); //getting the values of the LDR from the analog pin whenever there is a change
 
-  //printint the values on the serial monitor
+  //printing the values on the serial monitor
   Serial.print("Sensor Value : ");
   Serial.println(sensorValue);
 
