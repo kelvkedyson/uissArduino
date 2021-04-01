@@ -16,7 +16,6 @@ LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 
 void setup() {
   Serial.begin(9600);
-  lcd.begin(16, 2);
 }
 
 void loop() {
@@ -29,20 +28,28 @@ void loop() {
   byte humidity = 0;
   byte data[40] = {0};
   if (dht11.read(pinDHT11, &temperature, &humidity, data)) {
-    Serial.print("Read DHT11 failed");
+    Serial.println("Read DHT11");
     return;
   }
   
   Serial.println("");
   
   Serial.print("Results: ");
-  Serial.print((int)temperature);
+  Serial.print((float)temperature);
   Serial.print(" *C, ");
-  Serial.print((int)humidity);
+  Serial.print((float)humidity);
   Serial.println(" %");
 
+  lcd.begin(16, 2);
+  lcd.print("Hum : ");
+  lcd.print(humidity);
+  lcd.print("%");
+
   lcd.setCursor(0, 1);
-  lcd.print("Temperature:");
+  lcd.print("Temp:");
+  lcd.setCursor(6, 1);
+  lcd.print(temperature);
+  lcd.print("C");
   
   // DHT11 sampling rate is 1HZ.
   delay(1000);
