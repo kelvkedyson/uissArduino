@@ -34,17 +34,17 @@ void translateIR(){
   Serial.println(results.value, HEX);
 
   switch(results.value){
-      case 0xFDA05F: 
+      case 0xFFE01F: 
         servo.write(0);
         Serial.println("0 degrees");
         switchOnGreenLED();
       break;
-      case 0xFD10EF: 
+      case 0xFF906F: 
         servo.write(90);
         Serial.println("90 degrees");
         switchOnYellowLED();
        break;
-      case 0xFD50AF: 
+      case 0xFF02FD: 
         servo.write(180);
         Serial.println("180 degrees");
         switchOnRedLED();
